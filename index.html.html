@@ -1,0 +1,906 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Hackhouse | Comedy Songs • Real Life • DIY Chaos</title>
+  <meta name="description" content="The Hackhouse: original comedy songs about everyday chaos, parenting, DIY fails and real life." />
+
+  <style>
+    :root{
+      --bg:#030513;
+      --bg2:#07091b;
+      --panel:#090c22;
+      --panel2:#0d112a;
+      --white:#ffffff;
+      --muted:#c8c8dc;
+      --dim:#8989a6;
+      --pink:#ff168c;
+      --pink2:#ff45b6;
+      --blue:#1687ff;
+      --blue2:#58a9ff;
+      --line:rgba(255,255,255,.12);
+      --pink-line:rgba(255,22,140,.48);
+      --blue-line:rgba(22,135,255,.48);
+      --radius:18px;
+      --max:1180px;
+      --shadow:0 28px 70px rgba(0,0,0,.36);
+      --glow-pink:0 0 28px rgba(255,22,140,.28);
+      --glow-blue:0 0 28px rgba(22,135,255,.25);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(22,135,255,.28), transparent 28%),
+        radial-gradient(circle at 88% 0%, rgba(255,22,140,.25), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.03), transparent 32%),
+        var(--bg);
+      color:var(--white);
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site{
+      min-height:100vh;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.25), transparent 20%, transparent 80%, rgba(0,0,0,.25));
+    }
+
+    .nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:10;
+      backdrop-filter:blur(16px);
+      background:rgba(3,5,19,.72);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      letter-spacing:-1px;
+      text-transform:uppercase;
+      line-height:.9;
+    }
+
+    .mini-logo{
+      width:152px;
+      height:auto;
+      object-fit:contain;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:34px;
+      font-size:13px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+    }
+
+    .nav-links a{
+      position:relative;
+      opacity:.94;
+    }
+
+    .nav-links a:hover{color:var(--pink)}
+    .nav-links a.active:after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-15px;
+      height:3px;
+      background:var(--pink);
+      border-radius:99px;
+      box-shadow:0 0 16px var(--pink);
+    }
+
+    .socials{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      font-size:20px;
+    }
+
+    .hero{
+      position:relative;
+      min-height:610px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:138px 22px 70px;
+      text-align:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at center, rgba(19,22,58,.96) 0%, rgba(3,5,19,.92) 55%, rgba(3,5,19,1) 100%);
+    }
+
+    .hero:before,
+    .hero:after{
+      content:"";
+      position:absolute;
+      top:0;
+      height:100%;
+      width:420px;
+      opacity:.92;
+      pointer-events:none;
+      filter:drop-shadow(0 0 16px currentColor);
+    }
+
+    .hero:before{
+      left:-120px;
+      color:var(--blue);
+      background:
+        repeating-linear-gradient(48deg,
+          transparent 0 52px,
+          rgba(84,169,255,.95) 53px 59px,
+          rgba(255,255,255,.95) 60px 63px,
+          transparent 64px 100px);
+    }
+
+    .hero:after{
+      right:-120px;
+      color:var(--pink);
+      background:
+        repeating-linear-gradient(132deg,
+          transparent 0 52px,
+          rgba(255,22,140,.95) 53px 59px,
+          rgba(255,255,255,.95) 60px 63px,
+          transparent 64px 100px);
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:min(760px,100%);
+      margin:auto;
+    }
+
+    .hero-logo{
+      width:min(430px,72vw);
+      margin:0 auto 24px;
+      filter:drop-shadow(0 12px 22px rgba(255,255,255,.08));
+    }
+
+    .kicker{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:11px;
+      margin-bottom:18px;
+      font-size:18px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:4px;
+    }
+
+    .dot-p{color:var(--pink)}
+    .dot-b{color:var(--blue)}
+
+    .hero-text{
+      max-width:610px;
+      margin:0 auto 24px;
+      color:#e4e4ef;
+      font-size:18px;
+    }
+
+    .signature{
+      margin:0 auto 30px;
+      font-size:23px;
+      font-weight:500;
+      font-style:italic;
+      letter-spacing:1px;
+    }
+
+    .signature strong{
+      color:var(--pink);
+      position:relative;
+      font-weight:900;
+    }
+
+    .signature strong:after{
+      content:"";
+      position:absolute;
+      left:-3px;
+      right:-3px;
+      bottom:-5px;
+      height:4px;
+      background:var(--pink);
+      border-radius:20px;
+      transform:rotate(-2deg);
+      box-shadow:0 0 12px var(--pink);
+    }
+
+    .btns{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:20px;
+    }
+
+    .btn{
+      min-width:230px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:11px;
+      padding:16px 25px;
+      border-radius:10px;
+      font-size:14px;
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:.7px;
+      transition:.2s ease;
+    }
+
+    .btn:hover{transform:translateY(-3px)}
+    .btn-pink{
+      background:linear-gradient(135deg, var(--pink), #ff2aa5);
+      box-shadow:0 0 34px rgba(255,22,140,.34);
+    }
+    .btn-outline{
+      border:1.5px solid var(--pink);
+      background:rgba(0,0,0,.23);
+      box-shadow:inset 0 0 24px rgba(255,22,140,.08);
+    }
+
+    .down{
+      margin-top:24px;
+      color:var(--pink);
+      font-size:26px;
+      text-shadow:0 0 16px var(--pink);
+    }
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px 36px;
+    }
+
+    .main-grid{
+      display:grid;
+      grid-template-columns:235px 1fr 290px;
+      gap:22px;
+      margin-top:16px;
+    }
+
+    .panel{
+      background:linear-gradient(145deg, rgba(13,17,42,.92), rgba(5,7,22,.86));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
+    }
+
+    .panel.blue{border-color:var(--blue-line); box-shadow:var(--shadow), inset 0 0 35px rgba(22,135,255,.08), var(--glow-blue)}
+    .panel.pink{border-color:var(--pink-line); box-shadow:var(--shadow), inset 0 0 35px rgba(255,22,140,.08), var(--glow-pink)}
+
+    .latest{
+      padding:28px 24px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-height:330px;
+    }
+
+    .label{
+      color:var(--pink);
+      font-size:13px;
+      letter-spacing:1.4px;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+
+    .latest h2{
+      font-size:32px;
+      line-height:1.16;
+      margin-bottom:18px;
+    }
+
+    .latest p{
+      color:#d7d7e6;
+      font-size:15px;
+      margin-bottom:24px;
+    }
+
+    .small-btn{
+      display:inline-flex;
+      width:max-content;
+      align-items:center;
+      gap:9px;
+      padding:12px 18px;
+      border-radius:8px;
+      border:1px solid var(--blue);
+      color:var(--blue2);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      box-shadow:0 0 20px rgba(22,135,255,.15);
+    }
+
+    .video{
+      min-height:330px;
+      overflow:hidden;
+      border-color:rgba(255,22,140,.65);
+      position:relative;
+      background:
+        linear-gradient(90deg, rgba(22,135,255,.85), rgba(255,22,140,.55) 48%, rgba(30,0,20,.9)),
+        url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1100&q=80");
+      background-size:cover;
+      background-position:center;
+    }
+
+    .video:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(0,0,0,.05), rgba(0,0,0,.38));
+    }
+
+    .video-content{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      padding:34px;
+    }
+
+    .video-title{
+      font-size:48px;
+      line-height:.92;
+      text-align:left;
+      font-weight:950;
+      text-transform:uppercase;
+      transform:rotate(-3deg);
+      text-shadow:0 5px 14px rgba(0,0,0,.45);
+    }
+
+    .video-title span{
+      display:inline-block;
+      margin-top:8px;
+      padding:2px 9px 6px;
+      background:var(--pink);
+      color:white;
+    }
+
+    .play{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
+      width:82px;
+      height:58px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:rgba(0,0,0,.55);
+      font-size:31px;
+      box-shadow:0 0 30px rgba(0,0,0,.5);
+    }
+
+    .songs{
+      padding:22px;
+      min-height:330px;
+    }
+
+    .song-list{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:13px;
+    }
+
+    .song{
+      display:grid;
+      grid-template-columns:54px 1fr;
+      gap:12px;
+      align-items:center;
+    }
+
+    .thumb{
+      width:54px;
+      height:40px;
+      border-radius:5px;
+      background:
+        linear-gradient(135deg, rgba(22,135,255,.85), rgba(255,22,140,.8)),
+        url("https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=180&q=80");
+      background-size:cover;
+      background-position:center;
+    }
+
+    .song h4{font-size:14px;line-height:1.05}
+    .song p{font-size:12px;color:var(--muted);line-height:1.15}
+
+    .see-all{
+      color:var(--pink);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.7px;
+      display:inline-block;
+      margin-top:20px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .feature{
+      padding:25px;
+      min-height:178px;
+    }
+
+    .icon{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      border:1px solid currentColor;
+      margin-bottom:16px;
+      font-size:30px;
+      box-shadow:0 0 24px currentColor;
+    }
+
+    .feature.blue{color:var(--blue2)}
+    .feature.pink{color:var(--pink2)}
+    .feature h3{
+      font-size:20px;
+      text-transform:uppercase;
+      letter-spacing:.7px;
+      margin-bottom:8px;
+    }
+    .feature p{
+      color:white;
+      font-size:14px;
+    }
+    .feature a{
+      display:inline-block;
+      margin-top:18px;
+      color:currentColor;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+    }
+
+    .about{
+      position:relative;
+      margin-top:16px;
+      padding:34px;
+      display:grid;
+      grid-template-columns:260px minmax(0,1fr) 330px;
+      gap:30px;
+      align-items:center;
+      overflow:hidden;
+    }
+
+    .about:before{
+      content:"";
+      position:absolute;
+      inset:1px;
+      border-radius:calc(var(--radius) - 1px);
+      background:
+        linear-gradient(115deg, rgba(22,135,255,.16), transparent 32%),
+        linear-gradient(290deg, rgba(255,22,140,.15), transparent 38%);
+      pointer-events:none;
+    }
+
+    .about > *{position:relative;z-index:1}
+
+    .avatar{
+      width:220px;
+      aspect-ratio:1;
+      border-radius:50%;
+      object-fit:cover;
+      object-position:center;
+      border:4px solid rgba(255,255,255,.88);
+      outline:3px solid var(--pink);
+      box-shadow:0 0 34px rgba(255,22,140,.74), 0 0 48px rgba(22,135,255,.48);
+      background:linear-gradient(135deg, rgba(22,135,255,.8), rgba(255,22,140,.85));
+      margin:auto;
+    }
+
+    .about h2,
+    .recommend h2,
+    .work h2{
+      color:var(--pink);
+      font-size:26px;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    .about p{color:#e6e6f2;margin-bottom:10px}
+    .about em{color:var(--pink);font-size:18px}
+
+    .quote{
+      position:relative;
+      padding:35px 34px;
+      min-height:180px;
+      display:flex;
+      align-items:center;
+      font-size:21px;
+      line-height:1.25;
+      color:white;
+    }
+    .quote:before,.quote:after{
+      position:absolute;
+      color:var(--pink);
+      font-size:54px;
+      line-height:1;
+    }
+    .quote:before{content:"“"; left:22px; top:18px}
+    .quote:after{content:"”"; right:25px; bottom:5px}
+
+    .recommend{
+      margin-top:16px;
+      padding:26px;
+    }
+
+    .recommend-head{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:20px;
+      align-items:center;
+      margin-bottom:24px;
+    }
+
+    .recommend p{color:#e5e5f0}
+
+    .rec-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:0;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .rec{
+      padding:22px;
+      min-height:126px;
+      border-right:1px solid rgba(255,255,255,.17);
+      display:grid;
+      grid-template-columns:52px 1fr;
+      gap:16px;
+      align-items:center;
+    }
+    .rec:last-child{border-right:0}
+    .rec-ico{
+      width:52px;height:52px;
+      display:grid;place-items:center;
+      font-size:30px;
+      color:var(--blue2);
+    }
+    .rec:nth-child(even) .rec-ico{color:var(--pink2)}
+    .rec h3{
+      color:var(--pink);
+      font-size:15px;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+    }
+    .rec:nth-child(odd) h3{color:var(--blue2)}
+    .rec p{font-size:13px;color:#e4e4ed;line-height:1.3}
+
+    .work{
+      margin-top:16px;
+      padding:24px;
+      display:grid;
+      grid-template-columns:1.1fr .8fr 1fr;
+      gap:20px;
+      align-items:center;
+      border-color:var(--blue-line);
+    }
+
+    .work-col{
+      min-height:94px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      padding:0 24px;
+      border-right:1px solid rgba(255,255,255,.22);
+    }
+    .work-col:last-child{border-right:0}
+    .mail-icon{
+      width:58px;height:58px;
+      border-radius:14px;
+      border:1px solid currentColor;
+      display:grid;place-items:center;
+      font-size:30px;
+      color:var(--pink);
+      box-shadow:0 0 26px currentColor;
+      flex:none;
+    }
+    .work-col:nth-child(3) .mail-icon{color:var(--blue2)}
+    .connect-icons{display:flex;gap:18px;font-size:25px;margin-top:8px}
+
+    footer{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:26px 22px 36px;
+      display:grid;
+      grid-template-columns:1fr 1.5fr 1fr;
+      gap:18px;
+      align-items:center;
+      color:#c7c7d8;
+      font-size:13px;
+      text-align:center;
+    }
+    footer .mini-logo{width:120px}
+    footer div:first-child{text-align:left}
+    footer div:last-child{text-align:right}
+
+    @media(max-width:1000px){
+      .nav-links{display:none}
+      .socials{display:none}
+      .main-grid{grid-template-columns:1fr}
+      .latest{min-height:auto}
+      .cards{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr;text-align:left;padding:28px}
+      .avatar{width:min(230px,72vw);justify-self:center}
+      .rec-grid{grid-template-columns:1fr 1fr}
+      .rec:nth-child(2){border-right:0}
+      .work{grid-template-columns:1fr}
+      .work-col{border-right:0;border-bottom:1px solid rgba(255,255,255,.15);padding:18px 0}
+      .work-col:last-child{border-bottom:0}
+      footer{grid-template-columns:1fr;text-align:center}
+      footer div:first-child, footer div:last-child{text-align:center}
+      footer .mini-logo{margin:auto}
+    }
+
+    @media(max-width:620px){
+      .hero{min-height:560px;padding-top:110px}
+      .hero:before{left:-250px}
+      .hero:after{right:-250px}
+      .kicker{font-size:13px;letter-spacing:2px}
+      .signature{font-size:19px}
+      .btn{width:100%;min-width:0}
+      .video-title{font-size:34px}
+      .rec-grid{grid-template-columns:1fr}
+      .rec{border-right:0;border-bottom:1px solid rgba(255,255,255,.15)}
+      .rec:last-child{border-bottom:0}
+      .mini-logo{width:130px}
+      .nav-inner{padding:14px 18px}
+      .wrap{padding-inline:16px}
+      .about{padding:22px;gap:20px}
+      .quote{font-size:18px;padding:30px 24px}
+      .work-col{align-items:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site">
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="#home" aria-label="The Hackhouse home">
+          <img class="mini-logo" src="the_hackhouse_logo_white.png" alt="The Hackhouse logo" />
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="active" href="#home">Home</a>
+          <a href="#videos">Videos</a>
+          <a href="#recommendations">Recommendations</a>
+          <a href="#about">About Nat</a>
+          <a href="#work">Work With Me</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="socials" aria-label="Social links">
+          <a href="https://www.youtube.com/@TheHackhouse" target="_blank" aria-label="YouTube">▶</a>
+          <a href="CHANGE_THIS_INSTAGRAM_LINK" target="_blank" aria-label="Instagram">◎</a>
+          <a href="CHANGE_THIS_SPOTIFY_LINK" target="_blank" aria-label="Spotify">◉</a>
+          <a href="mailto:hi@thehackhouseofficial.com" aria-label="Email">✉</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="hero-content">
+          <img class="hero-logo" src="the_hackhouse_logo_white.png" alt="The Hackhouse logo" />
+
+          <div class="kicker">
+            <span>Comedy Songs</span><span class="dot-p">•</span>
+            <span>Real Life</span><span class="dot-b">•</span>
+            <span>DIY Chaos</span>
+          </div>
+
+          <p class="hero-text">Original songs about everyday chaos, parenting, DIY fails, and things that probably did not need a full musical production.</p>
+
+          <p class="signature">Not a singer. Just can’t <strong>shut up.</strong></p>
+
+          <div class="btns">
+            <a class="btn btn-pink" href="https://www.youtube.com/@TheHackhouse" target="_blank">▶ Watch on YouTube</a>
+            <a class="btn btn-outline" href="CHANGE_THIS_SPOTIFY_LINK" target="_blank">◉ Listen on Spotify</a>
+          </div>
+
+          <div class="down">⌄</div>
+        </div>
+      </section>
+
+      <div class="wrap" id="videos">
+        <section class="main-grid" aria-label="Featured channel content">
+          <aside class="panel blue latest">
+            <div class="label">Latest Video</div>
+            <h2>New songs.<br>Real chaos.<br>Every week.</h2>
+            <p>Original songs about everyday chaos, parenting, DIY fails and things that probably did not need a full musical production.</p>
+            <a class="small-btn" href="https://www.youtube.com/@TheHackhouse" target="_blank">▶ Visit Channel</a>
+          </aside>
+
+          <a class="panel pink video" href="https://www.youtube.com/@TheHackhouse" target="_blank" aria-label="Watch The Hackhouse on YouTube">
+            <div class="video-content">
+              <div class="video-title">Housewife<br>Productions<br><span>Presents</span></div>
+            </div>
+            <div class="play">▶</div>
+          </a>
+
+          <aside class="panel pink songs">
+            <div class="label">Popular Songs</div>
+            <div class="song-list">
+              <a class="song" href="https://www.youtube.com/@TheHackhouse" target="_blank">
+                <div class="thumb"></div><div><h4>The Apology</h4><p>Apple Tree Saga #1</p></div>
+              </a>
+              <a class="song" href="https://www.youtube.com/@TheHackhouse" target="_blank">
+                <div class="thumb"></div><div><h4>Ugly, But Juicy!</h4><p>Apple Tree Saga #2</p></div>
+              </a>
+              <a class="song" href="https://www.youtube.com/@TheHackhouse" target="_blank">
+                <div class="thumb"></div><div><h4>Cankles</h4><p>Official Music Video</p></div>
+              </a>
+              <a class="song" href="https://www.youtube.com/@TheHackhouse" target="_blank">
+                <div class="thumb"></div><div><h4>Forever 39</h4><p>Official Music Video</p></div>
+              </a>
+              <a class="song" href="https://www.youtube.com/@TheHackhouse" target="_blank">
+                <div class="thumb"></div><div><h4>DIY Lip Balm</h4><p>Because Why Not</p></div>
+              </a>
+              <a class="song" href="https://www.youtube.com/@TheHackhouse" target="_blank">
+                <div class="thumb"></div><div><h4>Long Legs</h4><p>Official Music Video</p></div>
+              </a>
+            </div>
+            <a class="see-all" href="https://www.youtube.com/@TheHackhouse" target="_blank">See all videos →</a>
+          </aside>
+        </section>
+
+        <section class="cards" aria-label="Content categories">
+          <article class="panel blue feature blue">
+            <div class="icon">♪</div>
+            <h3>Comedy Songs</h3>
+            <p>Songs about parenting, objects, spiders, apples, cankles and everything in between.</p>
+            <a href="https://www.youtube.com/@TheHackhouse" target="_blank">Explore songs →</a>
+          </article>
+
+          <article class="panel pink feature pink">
+            <div class="icon">⌘</div>
+            <h3>DIY Chaos</h3>
+            <p>Testing hacks, trying things, fixing problems and making beautiful disasters.</p>
+            <a href="#recommendations">See the chaos →</a>
+          </article>
+
+          <article class="panel blue feature blue">
+            <div class="icon">♡</div>
+            <h3>Real Life</h3>
+            <p>The unfiltered, the messy, the funny and the honest. This is real life.</p>
+            <a href="#about">Read more →</a>
+          </article>
+        </section>
+
+        <section class="panel pink about" id="about">
+          <img class="avatar" src="blue_magenta.jpg" alt="Nat" />
+          <div>
+            <h2>About Nat</h2>
+            <p><strong>Hi, I’m Natalia</strong> — but you can call me Nat.</p>
+            <p>I started The Hackhouse because apparently normal hobbies were not dramatic enough.</p>
+            <p>I make comedy songs, test ideas, film real-life chaos, and turn everyday moments into unnecessary productions.</p>
+            <p><em>Life is weird. Let’s sing about it.</em></p>
+          </div>
+          <blockquote class="panel pink quote">
+            I have a Master’s degree in Economics. Somehow I ended up making songs about apple trees and cankles.
+          </blockquote>
+        </section>
+
+        <section class="panel pink recommend" id="recommendations">
+          <div class="recommend-head">
+            <div>
+              <h2>Things I Recommend</h2>
+              <p>Products, tools and random discoveries I actually use, test or obsess over. Some links may be affiliate links, which means I may earn a small commission at no extra cost to you.</p>
+            </div>
+            <a class="see-all" href="CHANGE_THIS_RECOMMENDATIONS_PAGE">See all recommendations →</a>
+          </div>
+
+          <div class="rec-grid">
+            <a class="rec" href="CHANGE_THIS_AFFILIATE_LINK">
+              <div class="rec-ico">▣</div>
+              <div><h3>Filming Gear</h3><p>Cameras, mics, lights and creator tools that make filming easier.</p></div>
+            </a>
+            <a class="rec" href="CHANGE_THIS_AFFILIATE_LINK">
+              <div class="rec-ico">♫</div>
+              <div><h3>Music Tools</h3><p>Software, apps and everything that helps make the songs.</p></div>
+            </a>
+            <a class="rec" href="CHANGE_THIS_AFFILIATE_LINK">
+              <div class="rec-ico">⌂</div>
+              <div><h3>Home & DIY</h3><p>Hacks, gadgets and products that solve annoying problems.</p></div>
+            </a>
+            <a class="rec" href="CHANGE_THIS_AFFILIATE_LINK">
+              <div class="rec-ico">♡</div>
+              <div><h3>Beauty & Life</h3><p>Things I use, test and sometimes yell about in songs.</p></div>
+            </a>
+          </div>
+        </section>
+
+        <section class="panel blue work" id="work">
+          <div class="work-col">
+            <div class="mail-icon">✉</div>
+            <div>
+              <h2>Work With Me</h2>
+              <p>Product testing, musical comedy integrations, creative campaigns, affiliate partnerships, voice concepts and more.</p>
+            </div>
+          </div>
+
+          <div class="work-col">
+            <div>
+              <h2 style="color:var(--blue2)">Let’s Connect</h2>
+              <div class="connect-icons">
+                <a href="https://www.youtube.com/@TheHackhouse" target="_blank">▶</a>
+                <a href="CHANGE_THIS_INSTAGRAM_LINK" target="_blank">◎</a>
+                <a href="CHANGE_THIS_SPOTIFY_LINK" target="_blank">◉</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-col" id="contact">
+            <div class="mail-icon">✉</div>
+            <div>
+              <p><strong><a href="mailto:hi@thehackhouseofficial.com">hi@thehackhouseofficial.com</a></strong></p>
+              <p>Business Inquiries</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div>
+        <img class="mini-logo" src="the_hackhouse_logo_white.png" alt="The Hackhouse logo" />
+      </div>
+
+      <div>
+        <p>The Hackhouse is part of Janas Media Lab</p>
+        <p>Org.nr: 837 798 272 • Norway</p>
+      </div>
+
+      <div>
+        <p>© 2026 The Hackhouse.</p>
+        <p>Comedy, chaos and questionable productions.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+
